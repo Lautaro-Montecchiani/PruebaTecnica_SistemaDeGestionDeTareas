@@ -20,6 +20,18 @@ jspm_packages/
 # Build output
 /dist
 /build
+.next/
+coverage/
+*.tsbuildinfo
+
+# Marp
+*.pptx
+*.pdf
+*.html
+*.png
+*.jpg
+*.jpeg
+*.txt
 
 # OS files
 .DS_Store
