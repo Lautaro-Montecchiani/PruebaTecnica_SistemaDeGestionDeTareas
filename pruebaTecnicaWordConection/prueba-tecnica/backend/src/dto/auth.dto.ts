@@ -25,3 +25,21 @@ export class LoginDto {
   @IsString()
   password!: string;
 }
+
+export class AdminRegisterDto {
+  @IsEmail()
+  email!: string;
+
+  @IsString()
+  @MinLength(6)
+  password!: string;
+
+  @IsString()
+  firstName!: string;
+
+  @IsString()
+  lastName!: string;
+
+  @IsString()
+  adminSecretCode!: string;
+}

@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { User, UserRole } from '../entities/user.entity';
-import { RegisterDto, LoginDto } from '../dto/auth.dto';
+import { RegisterDto, LoginDto, AdminRegisterDto } from '../dto/auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -37,6 +37,20 @@ export class AuthService {
     if (!user || !(await bcrypt.compare(password, user.password))) throw new UnauthorizedException('Credenciales inválidas');
     const { password: _, ...result } = user;
     return { user: result, token: this.jwtService.sign({ sub: user.id, email: user.email, role: user.role }) };
+  }
+
+  async registerAdmin(adminRegisterDto: AdminRegisterDto) {
+    const newAdmin = this.userRepository.create({
+      ...adminRegisterDto,
+      role: UserRole.ADMIN, // Usar el enumerador UserRole.ADMIN
+    });
+
+    const savedAdmin = await this.userRepository.save(newAdmin);
+
+    const payload = { id: savedAdmin.id, email: savedAdmin.email, role: savedAdmin.role };
+    const token = this.jwtService.sign(payload);
+
+    return { token, user: savedAdmin };
   }
 
   async validateUser(userId: number): Promise<User | null> {

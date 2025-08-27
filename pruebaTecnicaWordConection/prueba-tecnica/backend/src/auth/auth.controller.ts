@@ -1,6 +1,6 @@
-import { Controller, Post, Body, ValidationPipe, UseGuards, Get, Request } from '@nestjs/common';
+import { Controller, Post, Body, ValidationPipe, UseGuards, Get, Request, BadRequestException } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { RegisterDto, LoginDto } from '../dto/auth.dto';
+import { RegisterDto, LoginDto, AdminRegisterDto } from '../dto/auth.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Controller('auth')
@@ -21,5 +21,16 @@ export class AuthController {
   @Get('profile')
   getProfile(@Request() req: any) {
     return req.user;
+  }
+
+  @Post('register-admin')
+  async registerAdmin(@Body(ValidationPipe) adminRegisterDto: AdminRegisterDto) {
+    const secretCode = process.env.ADMIN_SECRET_CODE || 'defaultSecret';
+
+    if (adminRegisterDto.adminSecretCode !== secretCode) {
+      throw new BadRequestException('Código secreto inválido');
+    }
+
+    return this.authService.registerAdmin(adminRegisterDto);
   }
 }

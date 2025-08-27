@@ -60,6 +60,13 @@ let AuthService = class AuthService {
         const { password: _ } = user, result = __rest(user, ["password"]);
         return { user: result, token: this.jwtService.sign({ sub: user.id, email: user.email, role: user.role }) };
     }
+    async registerAdmin(adminRegisterDto) {
+        const newAdmin = this.userRepository.create(Object.assign(Object.assign({}, adminRegisterDto), { role: user_entity_1.UserRole.ADMIN }));
+        const savedAdmin = await this.userRepository.save(newAdmin);
+        const payload = { id: savedAdmin.id, email: savedAdmin.email, role: savedAdmin.role };
+        const token = this.jwtService.sign(payload);
+        return { token, user: savedAdmin };
+    }
     async validateUser(userId) {
         return this.userRepository.findOne({ where: { id: userId } });
     }

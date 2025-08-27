@@ -106,177 +106,185 @@ export default function AdminRegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f1629] to-[#1e2a4a] py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md bg-[#1a2744] border-slate-700">
-        <CardHeader>
-          <div className="text-center">
-            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-900/20 mb-4">
-              <Shield className="h-6 w-6 text-yellow-500" />
-            </div>
-            <h2 className="text-3xl font-bold text-white">
-              Registro de Administrador
-            </h2>
-            <p className="mt-2 text-sm text-slate-300">
-              Crea una cuenta de administrador con código secreto
-            </p>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {error && (
-              <div className="flex items-center space-x-2 text-red-400 text-sm bg-red-900/20 p-3 rounded-md border border-red-700">
-                <AlertCircle className="w-4 h-4" />
-                <span>{error}</span>
-              </div>
-            )}
+    <div className="min-h-screen flex items-center justify-center bg-[#555555] py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-600/10 to-pink-600/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-cyan-600/10 to-blue-600/10 rounded-full blur-3xl" />
+      </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">
-                  Nombre *
-                </label>
-                <Input 
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  required
-                  placeholder="Tu nombre"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">
-                  Apellido *
-                </label>
-                <Input 
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                  placeholder="Tu apellido"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">
-                Email *
-              </label>
-              <Input 
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                placeholder="admin@empresa.com"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">
-                Contraseña *
-              </label>
-              <div className="relative">
-                <Input 
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                  placeholder="Mínimo 6 caracteres"
-                  className="pr-10"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4 text-slate-400" />
-                  ) : (
-                    <Eye className="h-4 w-4 text-slate-400" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">
-                Confirmar Contraseña *
-              </label>
-              <div className="relative">
-                <Input 
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  required
-                  placeholder="Confirma tu contraseña"
-                  className="pr-10"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                >
-                  {showConfirmPassword ? (
-                    <EyeOff className="h-4 w-4 text-slate-400" />
-                  ) : (
-                    <Eye className="h-4 w-4 text-slate-400" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">
-                Código Secreto de Administrador *
-              </label>
-              <Input 
-                type="password"
-                name="adminSecretCode"
-                value={formData.adminSecretCode}
-                onChange={handleChange}
-                required
-                placeholder="Código secreto"
-                className="font-mono"
-              />
-              <p className="text-xs text-slate-400 mt-1">
-                Ingresa el código secreto proporcionado por el sistema
-              </p>
-            </div>
-
-            <Button 
-              type="submit" 
-              disabled={loading} 
-              className="w-full"
-            >
-              {loading ? (
-                <div className="flex items-center">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  Registrando...
-                </div>
-              ) : (
-                'Crear Cuenta de Administrador'
-              )}
-            </Button>
-
+      <div className="max-w-md w-full space-y-8 relative z-10">
+        <Card className="bg-[#4B4B4B] border-slate-700">
+          <CardContent className="p-8">
             <div className="text-center">
-              <p className="text-sm text-slate-300">
-                ¿Ya tienes una cuenta?{' '}
-                <Link 
-                  href="/auth/login" 
-                  className="font-medium text-blue-400 hover:text-blue-300"
-                >
-                  Inicia sesión aquí
-                </Link>
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-900/20 mb-4">
+                <Shield className="h-6 w-6 text-yellow-500" />
+              </div>
+              <h2 className="text-3xl font-bold text-white">
+                Registro de Administrador
+              </h2>
+              <p className="mt-2 text-sm text-slate-300">
+                Crea una cuenta de administrador con código secreto
               </p>
             </div>
-          </form>
-        </CardContent>
-      </Card>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="flex items-center space-x-2 text-red-400 text-sm bg-red-900/20 p-3 rounded-md border border-red-700">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-1">
+                    Nombre *
+                  </label>
+                  <Input 
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                    placeholder="Tu nombre"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-1">
+                    Apellido *
+                  </label>
+                  <Input 
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                    placeholder="Tu apellido"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-300 mb-1">
+                  Email *
+                </label>
+                <Input 
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="admin@empresa.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-300 mb-1">
+                  Contraseña *
+                </label>
+                <div className="relative">
+                  <Input 
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                    placeholder="Mínimo 6 caracteres"
+                    className="pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4 text-slate-400" />
+                    ) : (
+                      <Eye className="h-4 w-4 text-slate-400" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-300 mb-1">
+                  Confirmar Contraseña *
+                </label>
+                <div className="relative">
+                  <Input 
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    required
+                    placeholder="Confirma tu contraseña"
+                    className="pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOff className="h-4 w-4 text-slate-400" />
+                    ) : (
+                      <Eye className="h-4 w-4 text-slate-400" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-300 mb-1">
+                  Código Secreto de Administrador *
+                </label>
+                <Input 
+                  type="password"
+                  name="adminSecretCode"
+                  value={formData.adminSecretCode}
+                  onChange={handleChange}
+                  required
+                  placeholder="Código secreto"
+                  className="font-mono"
+                />
+                <p className="text-xs text-slate-400 mt-1">
+                  Ingresa el código secreto proporcionado por el sistema
+                </p>
+              </div>
+
+              <Button 
+                type="submit" 
+                disabled={loading} 
+                className="w-full"
+              >
+                {loading ? (
+                  <div className="flex items-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Registrando...
+                  </div>
+                ) : (
+                  'Crear Cuenta de Administrador'
+                )}
+              </Button>
+
+              <div className="text-center">
+                <p className="text-sm text-slate-300">
+                  ¿Ya tienes una cuenta?{' '}
+                  <Link 
+                    href="/auth/login" 
+                    className="font-medium text-blue-400 hover:text-blue-300"
+                  >
+                    Inicia sesión aquí
+                  </Link>
+                </p>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
-} 
+}
 

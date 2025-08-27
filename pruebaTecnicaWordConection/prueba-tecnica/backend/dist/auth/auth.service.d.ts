@@ -1,7 +1,7 @@
 import { JwtService } from '@nestjs/jwt';
 import { Repository } from 'typeorm';
 import { User, UserRole } from '../entities/user.entity';
-import { RegisterDto, LoginDto } from '../dto/auth.dto';
+import { RegisterDto, LoginDto, AdminRegisterDto } from '../dto/auth.dto';
 export declare class AuthService {
     private userRepository;
     private jwtService;
@@ -27,6 +27,10 @@ export declare class AuthService {
             isActive: boolean;
         };
         token: string;
+    }>;
+    registerAdmin(adminRegisterDto: AdminRegisterDto): Promise<{
+        token: string;
+        user: User;
     }>;
     validateUser(userId: number): Promise<User | null>;
 }

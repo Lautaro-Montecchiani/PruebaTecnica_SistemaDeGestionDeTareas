@@ -30,6 +30,13 @@ let AuthController = class AuthController {
     getProfile(req) {
         return req.user;
     }
+    async registerAdmin(adminRegisterDto) {
+        const secretCode = process.env.ADMIN_SECRET_CODE || 'defaultSecret';
+        if (adminRegisterDto.adminSecretCode !== secretCode) {
+            throw new common_1.BadRequestException('Código secreto inválido');
+        }
+        return this.authService.registerAdmin(adminRegisterDto);
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
@@ -54,6 +61,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "getProfile", null);
+__decorate([
+    (0, common_1.Post)('register-admin'),
+    __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [auth_dto_1.AdminRegisterDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "registerAdmin", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
