@@ -10,23 +10,26 @@ import { CategoryController } from './controllers/category.controller';
 import { CategoryService } from './services/category.service';
 import { UserController } from './controllers/user.controller';
 import { UserService } from './services/user.service';
+import { TaskGroup } from './entities/task-group.entity';
+import { TaskGroupController } from './controllers/task-group.controller';
+import { TaskGroupService } from './services/task-group.service';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST || 'db',
-      port: parseInt(process.env.DB_PORT, 10) || 5432,
-      username: process.env.DB_USER || 'usuario',
-      password: process.env.DB_PASSWORD || 'password',
-      database: process.env.DB_NAME || 'wordconnection',
-      entities: [User, Task, Category],
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 5432,
+  username: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'postgres',
+  database: process.env.DB_NAME || 'tasks',
+  entities: [User, Task, Category, TaskGroup],
       synchronize: true, // Solo para desarrollo
     }),
-    TypeOrmModule.forFeature([User, Task, Category]),
+  TypeOrmModule.forFeature([User, Task, Category, TaskGroup]),
     AuthModule,
   ],
-  controllers: [TaskController, CategoryController, UserController],
-  providers: [TaskService, CategoryService, UserService],
+  controllers: [TaskController, CategoryController, UserController, TaskGroupController],
+  providers: [TaskService, CategoryService, UserService, TaskGroupService],
 })
 export class AppModule {}

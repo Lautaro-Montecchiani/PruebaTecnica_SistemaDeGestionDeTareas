@@ -14,7 +14,7 @@ export class CategoryService {
     return this.categoryRepository.find();
   }
 
-  async findOne(id: number): Promise<Category> {
+  async findOne(id: number): Promise<Category | null> {
     return this.categoryRepository.findOne({ where: { id } });
   }
 
@@ -23,7 +23,7 @@ export class CategoryService {
     return this.categoryRepository.save(newCategory);
   }
 
-  async update(id: number, category: Partial<Category>): Promise<Category> {
+  async update(id: number, category: Partial<Category>): Promise<Category | null> {
     await this.categoryRepository.update(id, category);
     return this.findOne(id);
   }

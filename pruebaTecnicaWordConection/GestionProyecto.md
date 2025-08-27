@@ -165,17 +165,6 @@ Warning: [4b74:0009][2025-08-22T00:21:33] Didn't find any channel feed.
 Warning: [4b74:0003][2025-08-22T00:21:33] Didn't find any channel feed.
 [4b74:000f][2025-08-22T00:21:34] Authenticode verification returned 0x00000000 for path: C:\Program Files (x86)\Microsoft Visual Studio\Installer\setup.exe.
 
-
-
-
-
-
-
-
-
-
-
-
 </user>
 <assistant>
 Ese error no es normal, pero tampoco es grave si solo estás instalando Node.js y no necesitas actualizar o instalar Visual Studio en este momento.

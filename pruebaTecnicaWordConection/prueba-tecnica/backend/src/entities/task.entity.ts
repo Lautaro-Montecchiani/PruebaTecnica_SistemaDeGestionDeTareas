@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { User } from './user.entity';
 import { Category } from './category.entity';
+import { TaskGroup } from './task-group.entity';
 
 export enum TaskStatus {
   PENDING = 'pending',
@@ -11,20 +12,23 @@ export enum TaskStatus {
 @Entity('tasks')
 export class Task {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  title: string;
+  title!: string;
 
   @Column({ nullable: true })
-  description: string;
+  description!: string;
 
   @Column({ type: 'enum', enum: TaskStatus, default: TaskStatus.PENDING })
-  status: TaskStatus;
+  status!: TaskStatus;
 
   @ManyToOne(() => User, user => user.id)
-  user: User;
+  user!: User;
 
   @ManyToOne(() => Category, category => category.id)
-  category: Category;
+  category!: Category;
+
+  @ManyToOne(() => TaskGroup, group => group.tasks, { nullable: true })
+  group?: TaskGroup;
 }

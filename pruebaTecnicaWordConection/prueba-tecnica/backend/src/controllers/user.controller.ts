@@ -19,7 +19,7 @@ export class UserController {
 
   @Get(':id')
   @Roles(UserRole.ADMIN)
-  async findOne(@Param('id') id: number): Promise<User> {
+  async findOne(@Param('id') id: number): Promise<User | null> {
     return this.userService.findOne(id);
   }
 
@@ -31,7 +31,7 @@ export class UserController {
 
   @Put(':id')
   @Roles(UserRole.ADMIN)
-  async update(@Param('id') id: number, @Body() user: Partial<User>): Promise<User> {
+  async update(@Param('id') id: number, @Body() user: Partial<User>): Promise<User | null> {
     return this.userService.update(id, user);
   }
 

@@ -17,7 +17,7 @@ export class CategoryController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: number): Promise<Category> {
+  async findOne(@Param('id') id: number): Promise<Category | null> {
     return this.categoryService.findOne(id);
   }
 
@@ -29,7 +29,7 @@ export class CategoryController {
 
   @Put(':id')
   @Roles(UserRole.ADMIN)
-  async update(@Param('id') id: number, @Body() category: Partial<Category>): Promise<Category> {
+  async update(@Param('id') id: number, @Body() category: Partial<Category>): Promise<Category | null> {
     return this.categoryService.update(id, category);
   }
 
