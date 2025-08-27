@@ -174,6 +174,33 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     checkTokenValidity,
   };
 
+  useEffect(() => {
+    let inactivityTimer: NodeJS.Timeout;
+
+    const resetTimer = () => {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(() => {
+        logout();
+        alert('Sesión cerrada por inactividad.');
+      }, 30 * 60 * 1000); // 30 minutos
+    };
+
+    const activityEvents = ['mousemove', 'keydown', 'click'];
+
+    activityEvents.forEach((event) => {
+      window.addEventListener(event, resetTimer);
+    });
+
+    resetTimer(); // Inicializar el temporizador al montar el componente
+
+    return () => {
+      clearTimeout(inactivityTimer);
+      activityEvents.forEach((event) => {
+        window.removeEventListener(event, resetTimer);
+      });
+    };
+  }, [logout]);
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}; 
+};
 
