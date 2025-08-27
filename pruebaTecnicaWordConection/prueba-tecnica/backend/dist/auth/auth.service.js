@@ -36,12 +36,18 @@ let AuthService = class AuthService {
         this.jwtService = jwtService;
     }
     async register(registerDto) {
-        const { email, password } = registerDto;
+        const { email, password, firstName, lastName } = registerDto;
         const existing = await this.userRepository.findOne({ where: { email } });
         if (existing)
             throw new common_1.BadRequestException('Email ya registrado');
         const hashed = await bcrypt.hash(password, 10);
-        const user = this.userRepository.create({ email, password: hashed, role: user_entity_1.UserRole.USER });
+        const user = this.userRepository.create({
+            email,
+            password: hashed,
+            firstName,
+            lastName,
+            role: user_entity_1.UserRole.USER
+        });
         const saved = await this.userRepository.save(user);
         const { password: _ } = saved, result = __rest(saved, ["password"]);
         return { user: result, token: this.jwtService.sign({ sub: saved.id, email: saved.email, role: saved.role }) };

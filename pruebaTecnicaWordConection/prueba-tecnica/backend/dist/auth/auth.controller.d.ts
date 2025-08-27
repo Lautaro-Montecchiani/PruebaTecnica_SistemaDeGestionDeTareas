@@ -6,6 +6,8 @@ export declare class AuthController {
     register(registerDto: RegisterDto): Promise<{
         user: {
             id: number;
+            firstName: string;
+            lastName: string;
             email: string;
             role: import("../entities/user.entity").UserRole;
             isActive: boolean;
@@ -15,6 +17,8 @@ export declare class AuthController {
     login(loginDto: LoginDto): Promise<{
         user: {
             id: number;
+            firstName: string;
+            lastName: string;
             email: string;
             role: import("../entities/user.entity").UserRole;
             isActive: boolean;

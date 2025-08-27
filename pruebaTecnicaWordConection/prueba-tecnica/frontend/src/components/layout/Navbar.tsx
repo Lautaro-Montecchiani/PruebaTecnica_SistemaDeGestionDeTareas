@@ -22,8 +22,9 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/dashboard" className="flex-shrink-0">
-              <h1 className="text-xl font-bold text-white">TaskManager</h1>
+            <Link href="/dashboard" className="flex-shrink-0 flex items-center gap-2">
+              <img src="/logo.png" alt="Logo Gtask" className="w-7 h-7 object-contain" />
+              <h1 className="text-xl font-bold text-white">Gtask</h1>
             </Link>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link

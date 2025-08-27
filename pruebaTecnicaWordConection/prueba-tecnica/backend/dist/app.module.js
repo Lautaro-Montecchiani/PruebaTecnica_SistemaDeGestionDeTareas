@@ -19,6 +19,9 @@ const category_controller_1 = require("./controllers/category.controller");
 const category_service_1 = require("./services/category.service");
 const user_controller_1 = require("./controllers/user.controller");
 const user_service_1 = require("./services/user.service");
+const task_group_entity_1 = require("./entities/task-group.entity");
+const task_group_controller_1 = require("./controllers/task-group.controller");
+const task_group_service_1 = require("./services/task-group.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -28,18 +31,18 @@ exports.AppModule = AppModule = __decorate([
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: process.env.DB_HOST || 'localhost',
-                port: parseInt(process.env.DB_PORT || '5432', 10),
+                port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 5432,
                 username: process.env.DB_USER || 'postgres',
                 password: process.env.DB_PASSWORD || 'postgres',
                 database: process.env.DB_NAME || 'tasks',
-                entities: [user_entity_1.User, task_entity_1.Task, category_entity_1.Category],
+                entities: [user_entity_1.User, task_entity_1.Task, category_entity_1.Category, task_group_entity_1.TaskGroup],
                 synchronize: true,
             }),
-            typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, task_entity_1.Task, category_entity_1.Category]),
+            typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, task_entity_1.Task, category_entity_1.Category, task_group_entity_1.TaskGroup]),
             auth_module_1.AuthModule,
         ],
-        controllers: [task_controller_1.TaskController, category_controller_1.CategoryController, user_controller_1.UserController],
-        providers: [task_service_1.TaskService, category_service_1.CategoryService, user_service_1.UserService],
+        controllers: [task_controller_1.TaskController, category_controller_1.CategoryController, user_controller_1.UserController, task_group_controller_1.TaskGroupController],
+        providers: [task_service_1.TaskService, category_service_1.CategoryService, user_service_1.UserService, task_group_service_1.TaskGroupService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

@@ -51,11 +51,11 @@ const NavigationHeader: React.FC = () => {
           {/* Logo y marca */}
           <div className="flex items-center gap-3">
             <Link href="/dashboard" className="flex items-center gap-2">
-              <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-sm">
-                <CheckSquare className="w-5 h-5 text-white" />
+              <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-sm overflow-hidden">
+                <img src="/logo.png" alt="Logo Gtask" className="w-7 h-7 object-contain" />
               </div>
               <span className="text-xl font-bold text-white">
-                TaskManager
+                Gtask
               </span>
             </Link>
           </div>

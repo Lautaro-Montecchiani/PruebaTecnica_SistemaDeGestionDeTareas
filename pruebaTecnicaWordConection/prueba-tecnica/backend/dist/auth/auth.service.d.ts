@@ -9,6 +9,8 @@ export declare class AuthService {
     register(registerDto: RegisterDto): Promise<{
         user: {
             id: number;
+            firstName: string;
+            lastName: string;
             email: string;
             role: UserRole;
             isActive: boolean;
@@ -18,6 +20,8 @@ export declare class AuthService {
     login(loginDto: LoginDto): Promise<{
         user: {
             id: number;
+            firstName: string;
+            lastName: string;
             email: string;
             role: UserRole;
             isActive: boolean;

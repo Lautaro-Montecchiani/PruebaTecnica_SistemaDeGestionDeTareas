@@ -1,5 +1,6 @@
 import { User } from './user.entity';
 import { Category } from './category.entity';
+import { TaskGroup } from './task-group.entity';
 export declare enum TaskStatus {
     PENDING = "pending",
     IN_PROGRESS = "in_progress",
@@ -12,4 +13,5 @@ export declare class Task {
     status: TaskStatus;
     user: User;
     category: Category;
+    group?: TaskGroup;
 }

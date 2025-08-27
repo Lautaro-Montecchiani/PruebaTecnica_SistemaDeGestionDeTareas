@@ -13,8 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Task Manager - Gestión de Tareas",
-  description: "Sistema completo de gestión de tareas con autenticación y roles",
+  title: "Gtask - Gestión de Tareas",
+  description: "Gtask - Gestión de Tareas: sistema completo con autenticación y roles",
 };
 
 export default function RootLayout({

@@ -13,6 +13,7 @@ exports.Task = exports.TaskStatus = void 0;
 const typeorm_1 = require("typeorm");
 const user_entity_1 = require("./user.entity");
 const category_entity_1 = require("./category.entity");
+const task_group_entity_1 = require("./task-group.entity");
 var TaskStatus;
 (function (TaskStatus) {
     TaskStatus["PENDING"] = "pending";
@@ -46,6 +47,10 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => category_entity_1.Category, category => category.id),
     __metadata("design:type", category_entity_1.Category)
 ], Task.prototype, "category", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => task_group_entity_1.TaskGroup, group => group.tasks, { nullable: true }),
+    __metadata("design:type", task_group_entity_1.TaskGroup)
+], Task.prototype, "group", void 0);
 exports.Task = Task = __decorate([
     (0, typeorm_1.Entity)('tasks')
 ], Task);

@@ -13,19 +13,19 @@ export class TaskGroupController {
 
   @Post()
   @Roles(UserRole.PREMIUM)
-  async create(@Body() body: { name: string }, @Request() req): Promise<TaskGroup> {
+  async create(@Body() body: { name: string }, @Request() req: any): Promise<TaskGroup> {
     return this.taskGroupService.create(body.name, req.user.id);
   }
 
   @Get()
   @Roles(UserRole.PREMIUM)
-  async findAll(@Request() req): Promise<TaskGroup[]> {
+  async findAll(@Request() req: any): Promise<TaskGroup[]> {
     return this.taskGroupService.findAllByOwner(req.user.id);
   }
 
   @Delete(':id')
   @Roles(UserRole.PREMIUM)
-  async remove(@Param('id') id: number, @Request() req): Promise<void> {
+  async remove(@Param('id') id: number, @Request() req: any): Promise<void> {
     return this.taskGroupService.remove(id, req.user.id);
   }
 }

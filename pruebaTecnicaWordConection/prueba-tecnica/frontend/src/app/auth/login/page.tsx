@@ -56,20 +56,20 @@ export default function LoginPage() {
         <div className="text-center">
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl">
-                <Sparkles className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl overflow-hidden">
+                <img src="/logo.png" alt="Logo Gtask" className="w-12 h-12 object-contain" />
               </div>
               <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-20 animate-pulse" />
             </div>
           </div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
-            TaskManager
+            Gtask
           </h1>
           <h2 className="text-xl font-semibold text-white mb-2">
             Iniciar Sesión
           </h2>
           <p className="text-slate-400">
-            Gestiona tus tareas de manera eficiente
+
           </p>
         </div>
 
@@ -157,7 +157,7 @@ export default function LoginPage() {
         {/* Footer */}
         <div className="text-center">
           <p className="text-xs text-slate-500">
-            TaskManager © 2025 - Gestión de tareas profesional
+            Gtask © 2025 - Gestión de tareas profesional
           </p>
         </div>
       </div>
