@@ -43,7 +43,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f1629] to-[#1e2a4a] py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+  <div className="min-h-screen flex items-center justify-center bg-[#555555] py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-600/10 to-indigo-600/10 rounded-full blur-3xl" />
@@ -74,7 +74,7 @@ export default function LoginPage() {
         </div>
 
         {/* Formulario de login */}
-        <Card variant="elevated" className="backdrop-blur-sm bg-[#0a0a0a]/95 border-slate-700 shadow-2xl">
+  <Card variant="elevated" className="backdrop-blur-sm bg-[#4B4B4B]/95 border-slate-700 shadow-2xl">
           <CardContent className="p-8">
             {error && (
               <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-xl">

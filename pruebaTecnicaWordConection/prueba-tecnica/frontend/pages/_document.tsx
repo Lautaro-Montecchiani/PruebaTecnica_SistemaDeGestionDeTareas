@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/logo.png" />
-        <meta name="theme-color" content="#1a2744" />
+  <meta name="theme-color" content="#555555" />
   <meta name="description" content="Gtask - Gestión de Tareas" />
       </Head>
       <body>

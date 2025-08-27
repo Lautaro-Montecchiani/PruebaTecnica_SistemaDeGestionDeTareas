@@ -1,3 +1,4 @@
+import { TaskGroupService } from './services/task-group.service';
 import { AuthModule } from './auth/auth.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -12,7 +13,8 @@ import { UserController } from './controllers/user.controller';
 import { UserService } from './services/user.service';
 import { TaskGroup } from './entities/task-group.entity';
 import { TaskGroupController } from './controllers/task-group.controller';
-import { TaskGroupService } from './services/task-group.service';
+
+import { AnalyticsController } from './controllers/analytics.controller';
 
 @Module({
   imports: [
@@ -29,7 +31,7 @@ import { TaskGroupService } from './services/task-group.service';
   TypeOrmModule.forFeature([User, Task, Category, TaskGroup]),
     AuthModule,
   ],
-  controllers: [TaskController, CategoryController, UserController, TaskGroupController],
+  controllers: [TaskController, CategoryController, UserController, TaskGroupController, AnalyticsController],
   providers: [TaskService, CategoryService, UserService, TaskGroupService],
 })
 export class AppModule {}

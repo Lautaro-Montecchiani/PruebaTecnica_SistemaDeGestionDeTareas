@@ -1,12 +1,7 @@
 
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import LoginPage from './login';
 
 export default function Home() {
-  const router = useRouter();
-  useEffect(() => {
-    router.replace('/auth/login');
-  }, [router]);
-  return null;
+  return <LoginPage />;
 }

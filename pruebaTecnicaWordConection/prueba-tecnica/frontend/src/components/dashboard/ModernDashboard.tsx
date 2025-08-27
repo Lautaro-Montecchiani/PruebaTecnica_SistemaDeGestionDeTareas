@@ -96,7 +96,7 @@ export function ModernDashboard() {
 
   if (!isAuthenticated && !authLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0f1629] to-[#1e2a4a]">
+  <div className="min-h-screen bg-[#555555]">
         <Navbar />
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="text-center">
@@ -117,7 +117,7 @@ export function ModernDashboard() {
 
   if (authLoading || isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0f1629] to-[#1e2a4a]">
+  <div className="min-h-screen bg-[#555555]">
         <Navbar />
         <div className="flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></div>
@@ -127,9 +127,9 @@ export function ModernDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f1629] to-[#1e2a4a]">
+    <div className="min-h-screen bg-[#555555]">
       <Navbar />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white">
@@ -142,7 +142,7 @@ export function ModernDashboard() {
 
         {/* Stats Cards Container */}
         {stats && (
-          <div className="bg-[#1a2744] border border-slate-700/50 rounded-lg p-6 mb-8">
+          <div className="bg-[#4B4B4B] border border-slate-700/50 rounded-lg p-6 mb-8">
             <div className="mb-4">
               <h2 className="text-xl font-semibold text-white flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-blue-400" />
@@ -153,7 +153,7 @@ export function ModernDashboard() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Total de Tareas */}
-              <Card className="bg-[#1a2744] border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+              <Card className="bg-[#4B4B4B] border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -171,7 +171,7 @@ export function ModernDashboard() {
               </Card>
 
               {/* Completadas */}
-              <Card className="bg-[#1a2744] border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10">
+              <Card className="bg-[#4B4B4B] border-emerald-500/30 hover:border-emerald-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -198,7 +198,7 @@ export function ModernDashboard() {
               </Card>
 
               {/* En Progreso */}
-              <Card className="bg-[#1a2744] border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+              <Card className="bg-[#4B4B4B] border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -216,7 +216,7 @@ export function ModernDashboard() {
               </Card>
 
               {/* Pendientes */}
-              <Card className="bg-[#1a2744] border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10">
+              <Card className="bg-[#4B4B4B] border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
@@ -246,7 +246,7 @@ export function ModernDashboard() {
 
         {/* Action Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-[#1a2744] border-slate-700 hover:bg-[#243658] hover:border-slate-600 transition-all cursor-pointer" onClick={handleCreateTask}>
+          <Card className="bg-[#4B4B4B] border-slate-700 hover:bg-[#555555] hover:border-slate-600 transition-all cursor-pointer" onClick={handleCreateTask}>
             <CardContent className="p-6">
               <div className="flex items-center space-x-4">
                 <div className="p-3 bg-blue-900/30 rounded-lg border border-blue-700/50">
@@ -261,7 +261,7 @@ export function ModernDashboard() {
           </Card>
 
           <Link href="/analytics">
-            <Card className="bg-[#1a2744] border-slate-700 hover:bg-[#243658] hover:border-slate-600 transition-all cursor-pointer">
+            <Card className="bg-[#4B4B4B] border-slate-700 hover:bg-[#555555] hover:border-slate-600 transition-all cursor-pointer">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
                   <div className="p-3 bg-green-900/30 rounded-lg border border-green-700/50">
@@ -278,7 +278,7 @@ export function ModernDashboard() {
 
           {user?.role === 'admin' && (
             <Link href="/admin">
-              <Card className="bg-[#1a2744] border-slate-700 hover:bg-[#243658] hover:border-slate-600 transition-all cursor-pointer">
+              <Card className="bg-[#4B4B4B] border-slate-700 hover:bg-[#555555] hover:border-slate-600 transition-all cursor-pointer">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4">
                     <div className="p-3 bg-purple-900/30 rounded-lg border border-purple-700/50">
@@ -296,7 +296,7 @@ export function ModernDashboard() {
         </div>
 
         {/* Recent Tasks */}
-        <Card className="bg-[#1a2744] border-slate-700">
+  <Card className="bg-[#4B4B4B] border-slate-700">
           <CardHeader>
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-white title-highlight">Tareas Recientes</h2>

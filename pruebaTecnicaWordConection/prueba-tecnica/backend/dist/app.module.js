@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
+const task_group_service_1 = require("./services/task-group.service");
 const auth_module_1 = require("./auth/auth.module");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
@@ -21,7 +22,7 @@ const user_controller_1 = require("./controllers/user.controller");
 const user_service_1 = require("./services/user.service");
 const task_group_entity_1 = require("./entities/task-group.entity");
 const task_group_controller_1 = require("./controllers/task-group.controller");
-const task_group_service_1 = require("./services/task-group.service");
+const analytics_controller_1 = require("./controllers/analytics.controller");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -41,7 +42,7 @@ exports.AppModule = AppModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, task_entity_1.Task, category_entity_1.Category, task_group_entity_1.TaskGroup]),
             auth_module_1.AuthModule,
         ],
-        controllers: [task_controller_1.TaskController, category_controller_1.CategoryController, user_controller_1.UserController, task_group_controller_1.TaskGroupController],
+        controllers: [task_controller_1.TaskController, category_controller_1.CategoryController, user_controller_1.UserController, task_group_controller_1.TaskGroupController, analytics_controller_1.AnalyticsController],
         providers: [task_service_1.TaskService, category_service_1.CategoryService, user_service_1.UserService, task_group_service_1.TaskGroupService],
     })
 ], AppModule);

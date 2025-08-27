@@ -69,7 +69,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f1629] to-[#1e2a4a] py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
+  <div className="min-h-screen flex items-center justify-center bg-[#555555] py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
@@ -85,7 +85,7 @@ export default function RegisterPage() {
             </Link>
           </p>
         </div>
-        <Card className="bg-[#0a0a0a] border-slate-700">
+  <Card className="bg-[#4B4B4B] border-slate-700">
           <CardContent>
             <form className="space-y-6" onSubmit={handleSubmit}>
               {error && (

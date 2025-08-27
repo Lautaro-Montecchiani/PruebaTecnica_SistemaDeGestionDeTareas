@@ -45,7 +45,7 @@ const NavigationHeader: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#1a2744]/95 backdrop-blur-md border-b border-slate-700 shadow-lg">
+  <header className="sticky top-0 z-50 bg-[#555555]/95 backdrop-blur-md border-b border-slate-700 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo y marca */}
@@ -128,7 +128,7 @@ const NavigationHeader: React.FC = () => {
 
         {/* Menú móvil */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-slate-700 bg-[#1a2744]">
+          <div className="md:hidden border-t border-slate-700 bg-[#555555]">
             <div className="py-4 space-y-2">
               {/* Navegación */}
               {filteredNavItems.map((item) => {
